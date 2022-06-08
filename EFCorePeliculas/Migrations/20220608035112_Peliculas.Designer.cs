@@ -4,6 +4,7 @@ using EFCorePeliculas;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EFCorePeliculas.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220608035112_Peliculas")]
+    partial class Peliculas
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -64,33 +66,6 @@ namespace EFCorePeliculas.Migrations
                     b.ToTable("Cines");
                 });
 
-            modelBuilder.Entity("EFCorePeliculas.Entidades.CineOferta", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("CineId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime>("FechaFin")
-                        .HasColumnType("date");
-
-                    b.Property<DateTime>("FechaInicio")
-                        .HasColumnType("date");
-
-                    b.Property<decimal>("PorcentajeDescuento")
-                        .HasPrecision(5, 2)
-                        .HasColumnType("decimal(5,2)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CineId")
-                        .IsUnique();
-
-                    b.ToTable("CinesOfertas");
-                });
-
             modelBuilder.Entity("EFCorePeliculas.Entidades.Genero", b =>
                 {
                     b.Property<Guid>("Id")
@@ -130,20 +105,6 @@ namespace EFCorePeliculas.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Peliculas");
-                });
-
-            modelBuilder.Entity("EFCorePeliculas.Entidades.CineOferta", b =>
-                {
-                    b.HasOne("EFCorePeliculas.Entidades.Cine", null)
-                        .WithOne("CineOferta")
-                        .HasForeignKey("EFCorePeliculas.Entidades.CineOferta", "CineId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("EFCorePeliculas.Entidades.Cine", b =>
-                {
-                    b.Navigation("CineOferta");
                 });
 #pragma warning restore 612, 618
         }
