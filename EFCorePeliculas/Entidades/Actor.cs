@@ -12,5 +12,6 @@ namespace EFCorePeliculas.Entidades
         public string Biografia { get; set; }
         //[Column(TypeName = "Date")]
         public DateTime? FechaNacimiento { get; set; }
+        public List<PeliculaActor> PeliculasActores { get; set; }
     }
 }

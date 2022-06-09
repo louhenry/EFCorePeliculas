@@ -7,5 +7,7 @@ namespace EFCorePeliculas.Entidades
         public Guid Id { get; set; }
         //[Required]
         public string Nombre { get; set; }
+        public List<Pelicula> Peliculas { get; set; }
+
     }
 }

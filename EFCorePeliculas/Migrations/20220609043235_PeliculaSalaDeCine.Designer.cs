@@ -4,6 +4,7 @@ using EFCorePeliculas;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EFCorePeliculas.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220609043235_PeliculaSalaDeCine")]
+    partial class PeliculaSalaDeCine
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -128,27 +130,6 @@ namespace EFCorePeliculas.Migrations
                     b.ToTable("Peliculas");
                 });
 
-            modelBuilder.Entity("EFCorePeliculas.Entidades.PeliculaActor", b =>
-                {
-                    b.Property<Guid>("PeliculaId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("ActorId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<int>("Orden")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Personaje")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("PeliculaId", "ActorId");
-
-                    b.HasIndex("ActorId");
-
-                    b.ToTable("PeliculasActores");
-                });
-
             modelBuilder.Entity("EFCorePeliculas.Entidades.SalaDeCine", b =>
                 {
                     b.Property<Guid>("Id")
@@ -213,25 +194,6 @@ namespace EFCorePeliculas.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("EFCorePeliculas.Entidades.PeliculaActor", b =>
-                {
-                    b.HasOne("EFCorePeliculas.Entidades.Actor", "Actor")
-                        .WithMany("PeliculasActores")
-                        .HasForeignKey("ActorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("EFCorePeliculas.Entidades.Pelicula", "Pelicula")
-                        .WithMany("PeliculasActores")
-                        .HasForeignKey("PeliculaId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Actor");
-
-                    b.Navigation("Pelicula");
-                });
-
             modelBuilder.Entity("EFCorePeliculas.Entidades.SalaDeCine", b =>
                 {
                     b.HasOne("EFCorePeliculas.Entidades.Cine", "Cine")
@@ -273,21 +235,11 @@ namespace EFCorePeliculas.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("EFCorePeliculas.Entidades.Actor", b =>
-                {
-                    b.Navigation("PeliculasActores");
-                });
-
             modelBuilder.Entity("EFCorePeliculas.Entidades.Cine", b =>
                 {
                     b.Navigation("CineOferta");
 
                     b.Navigation("SalasDeCine");
-                });
-
-            modelBuilder.Entity("EFCorePeliculas.Entidades.Pelicula", b =>
-                {
-                    b.Navigation("PeliculasActores");
                 });
 #pragma warning restore 612, 618
         }
