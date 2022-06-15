@@ -58,3 +58,5 @@ C:\Users\lgomez\source\repos\EFCorePeliculas\EFCorePeliculas\obj\Debug\net6.0\re
 C:\Users\lgomez\source\repos\EFCorePeliculas\EFCorePeliculas\obj\Debug\net6.0\EFCorePeliculas.pdb
 C:\Users\lgomez\source\repos\EFCorePeliculas\EFCorePeliculas\obj\Debug\net6.0\EFCorePeliculas.genruntimeconfig.cache
 C:\Users\lgomez\source\repos\EFCorePeliculas\EFCorePeliculas\obj\Debug\net6.0\ref\EFCorePeliculas.dll
+C:\Users\lgomez\source\repos\EFCorePeliculas\EFCorePeliculas\bin\Debug\net6.0\AutoMapper.dll
+C:\Users\lgomez\source\repos\EFCorePeliculas\EFCorePeliculas\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
